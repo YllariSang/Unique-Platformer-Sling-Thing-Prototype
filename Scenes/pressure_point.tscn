@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://2o7rrlfi8nje"]
+
+[ext_resource type="Script" uid="uid://d01yq38g4srub" path="res://Scripts/pressure_point.gd" id="1_vise4"]
+[ext_resource type="Texture2D" uid="uid://cibognk857ip6" path="res://icon.svg" id="2_nhna8"]
+
+[sub_resource type="Gradient" id="Gradient_6yqyq"]
+colors = PackedColorArray(0, 0.47058824, 0.5058824, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ekq1o"]
+gradient = SubResource("Gradient_6yqyq")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_y1ssq"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(20, 20, 20)
+emission_shape = 1
+emission_sphere_radius = 1.0
+gravity = Vector3(0, 0, 0)
+radial_accel_min = -80.0
+radial_accel_max = -80.0
+damping_min = 10.0
+damping_max = 10.0
+scale_min = 1.5
+scale_max = 2.5
+color_ramp = SubResource("GradientTexture1D_ekq1o")
+
+[node name="PressurePoint" type="Node2D" unique_id=870245342]
+script = ExtResource("1_vise4")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=517990311]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_nhna8")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=1752252121]
+amount = 30
+lifetime = 0.5
+process_material = SubResource("ParticleProcessMaterial_y1ssq")
