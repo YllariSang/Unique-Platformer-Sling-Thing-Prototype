@@ -19,6 +19,7 @@ shape = SubResource("RectangleShape2D_vgqql")
 
 [node name="TagRay" type="RayCast2D" parent="." unique_id=677398885]
 target_position = Vector2(300, 0)
+hit_from_inside = true
 
 [node name="Muzzle" type="Marker2D" parent="." unique_id=1615744011]
 

@@ -14,14 +14,14 @@ func _ready():
 func _on_body_entered(body):
 	if body.name == "Player":
 		if body.velocity.length() > 600:
-			# Grant grace period to player on successful strike
 			body.grace_period_timer = 0.2
-			print("Player performed a kinetic strike!")
+			if body.has_method("restore_slow_mo_energy"):
+				body.restore_slow_mo_energy(25.0)
 			die()
 		else:
-			# Only damage player if they aren't in grace period
-			if body.grace_period_timer <= 0:
-				print("Enemy hit player!")
+			if body.has_method("take_damage"):
+				body.take_damage(20.0)
+				print("Enemy damaged player!")
 
 func _physics_process(delta):
 	if not is_on_floor() and not is_yanked:
